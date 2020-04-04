@@ -4,6 +4,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import Navbar from './components/Navbar/index';
+import "./pages/Home.css";
+import Contact from "./pages/Contact"
 
 function App() {
   return (
@@ -16,7 +18,10 @@ function App() {
             {/* <About /> */}
           </Route>
           <Route path="/contact">
-            {/* <Contact /> */}
+            <Contact />
+          </Route>
+          <Route path="/portfolio">
+            <Home />
           </Route>
           <Route path="/">
             <Home />

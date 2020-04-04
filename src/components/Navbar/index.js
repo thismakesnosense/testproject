@@ -1,9 +1,22 @@
 import React from "react";
-import {useLocation} from "react-router-dom";
-const UseLocation = useLocation();
+
+
 class Navbar extends React.Component {
+    
+    componentDidMount(){
+        document.querySelectorAll("button").forEach(item => {
+            item.addEventListener("mouseover", function(event) {
+               item.className = "animated jello";
+            })
+            item.addEventListener("mouseout", function(event) {
+                item.classList.remove("animated");
+                item.classList.remove("jello"); 
+             })
+    })
+    }
+
     isActive(Navitem){
-        return UseLocation.pathname === Navitem
+        return window.location.href.includes(Navitem);
         
     } 
 
@@ -27,13 +40,13 @@ class Navbar extends React.Component {
                             <a className="nav-link" href="bio">About Me <span className="sr-only">(current)</span></a>
                         </li>
 
-                        <li className="nav-item">
-                            <a className="nav-link" href="index.html">Portfolio</a>
+                        <li className={`nav-item ${this.isActive("portfolio") ? "active":""}`}>
+                            <a className="nav-link" href="portfolio">Portfolio</a>
                         </li>
 
                         {/* <!-- a Dropdown menu --> */}
-                        <li className="nav-item">
-                            <a className="nav-link" href="contact.html">Contact</a>
+                        <li className={`nav-item ${this.isActive("contact") ? "active":""}`}>
+                            <a className="nav-link" href="contact">Contact</a>
                         </li>
 
 
